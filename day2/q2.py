@@ -18,13 +18,9 @@ def calculate_score(outcome, opponent):
         if opponent == "A": return 6 + 2
         if opponent == "B": return 6 + 3
         if opponent == "C": return 6 + 1
-    
-    
-
-
-
+     
 #MAIN
-lines = open('input.txt').read().splitlines() #avoid pending a new line to each line like other methods 
+lines = open('input.txt').read().splitlines()
 total_score = 0
 
 for line in lines:

@@ -16,10 +16,8 @@ def play_roshambo(you, opponent):
     if you == "Y" and opponent == "C": return 0 #lost
     if you == "Z" and opponent == "A": return 0 #lost
 
-
-
 #MAIN
-lines = open('input.txt').read().splitlines() #avoid pending a new line to each line like other methods 
+lines = open('input.txt').read().splitlines()
 total_score = 0
 
 for line in lines:

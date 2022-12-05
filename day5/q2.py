@@ -1,23 +1,49 @@
-# 2 pairs split by comma 
-# each pair, two number separated by dash 
-    
-counter = 0
+"""
+        [C] [B] [H]                
+[W]     [D] [J] [Q] [B]            
+[P] [F] [Z] [F] [B] [L]            
+[G] [Z] [N] [P] [J] [S] [V]        
+[Z] [C] [H] [Z] [G] [T] [Z]     [C]
+[V] [B] [M] [M] [C] [Q] [C] [G] [H]
+[S] [V] [L] [D] [F] [F] [G] [L] [F]
+[B] [J] [V] [L] [V] [G] [L] [N] [J]
+ 1   2   3   4   5   6   7   8   9 
+"""
+
+stacks = []
+stacks.append(["B", "S", "V", "Z", "G", "P", "W"])
+stacks.append(["J", "V", "B", "C", "Z", "F"])
+stacks.append(["V", "L", "M", "H", "N", "Z", "D", "C"])
+stacks.append(["L", "D", "M", "Z", "P", "F", "J", "B"])
+stacks.append(["V", "F", "C", "G", "J", "B", "Q", "H"])
+stacks.append(["G", "F", "Q", "T", "S", "L", "B"])
+stacks.append(["L", "G", "C", "Z", "V"])
+stacks.append(["N", "L", "G"])
+stacks.append(["J", "F", "H", "C"])
+
 
 #MAIN
 lines = open('input.txt').read().splitlines()
 
 for line in lines:
 
-    pair1num1 = int(line.split(",")[0].split("-")[0])
-    pair1num2 = int(line.split(",")[0].split("-")[1])
+    parts = line.split()
 
-    pair2num1 = int(line.split(",")[1].split("-")[0])
-    pair2num2 = int(line.split(",")[1].split("-")[1])
+    move_count = int(parts[1])
+    from_index = int(parts[3]) - 1 # zero based index 
+    to_index = int(parts[5]) - 1 # zero based index
 
-    if (pair1num1 <= pair2num2) and (pair1num2 >= pair2num1):
-        counter += 1
+    move_crates = []
+    for i in range(move_count): 
+        move_crates.append(stacks[from_index][-1])
+        stacks[from_index].pop()
+    
+    move_crates.reverse()
 
-
-print(counter)
+    for i in move_crates:
+        stacks[to_index].append(i)
+    
+for i in range(len(stacks)):
+    print(stacks[i][-1])
 
 
